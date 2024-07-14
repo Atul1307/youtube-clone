@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { YOUTUBE_API_KEY } from '../utils/constants';
 import VideoCard from './VideoCard';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -10,7 +8,7 @@ const VideoContainer = () => {
     getVideos();
   }, []);
   const getVideos = async () => {
-    const data = await fetch(YOUTUBE_API_KEY);
+    const data = await fetch(process.env.REACT_APP_YOUTUBE_API_KEY);
     const json = await data.json();
     setVideos(json.items);
   };
